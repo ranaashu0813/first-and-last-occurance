@@ -1,0 +1,65 @@
+int first_index(int *arr, int start, int end , int x){
+    int f_index=-1; 
+    int mid = start +(end-start)/2;
+     while(start<=end){
+     
+    if(arr[mid]==x){
+        
+        f_index =mid; 
+        end = mid-1; 
+    }
+    
+    else if(arr[mid]<x){
+        start = mid+1; 
+    }
+    else{
+        end = mid-1; 
+    }
+    mid = start +(end-start)/2;
+    
+ }
+ return f_index; 
+}
+
+
+int end_index(int *arr, int start, int end , int x){
+    int e_index=-1; 
+    int mid = start +(end-start)/2;
+     while(start<=end){
+     
+    if(arr[mid]==x){
+        
+        e_index =mid; 
+        start = mid+1; 
+    }
+    
+    else if(arr[mid]<x){
+        start = mid+1; 
+    }
+    else{
+        end = mid-1; 
+    }
+    mid = start +(end-start)/2;
+    
+ }
+ return e_index; 
+
+}
+vector<int> find(int arr[], int n , int x )
+{
+  int start =0; 
+  int end = n-1; 
+  int f_index ; 
+  int e_index;
+  int mid = start +(end-start)/2;  //using this expression because to stop overflow
+  vector<int>ans; 
+  //firstly we have to find first position of the given x
+ f_index = first_index(arr,start,end,x); 
+ e_index = end_index(arr,start,end,x); 
+ 
+ 
+  ans.push_back(f_index); 
+  ans.push_back(e_index); 
+  return ans; 
+ 
+}
